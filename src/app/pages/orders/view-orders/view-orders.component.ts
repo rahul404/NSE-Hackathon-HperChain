@@ -82,7 +82,7 @@ export class ViewOrdersComponent {
       var flattenedOrders=[]
       if(orders.length>0)
       orders.forEach(element => {
-        flattenedOrders.push({orderId:element.orderId, securityName:element.security.securityName, price:element.price, quantity:element.quantity, transactionType:element.transactionType, createdBy:element.creator.account.owner.firstName})
+        flattenedOrders.push({orderId:element.orderId, securityName:element.security.securityName, price:element.price, quantity:element.quantity, transactionType:element.transactionType, createdBy:element.creator.owner.id})
       });
       return flattenedOrders
     }

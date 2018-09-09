@@ -8,32 +8,29 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="securityName">Security Name</label>
-              <input type="text" class="form-control" id="securityName" placeholder="First Name">
+              <input type="text" class="form-control" name="securityName"  [(ngModel)]="security.securityName" placeholder="Security Name" required>
             </div>
           </div>
-          
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
               <label for="assetClass">Asset Class</label>
-              <select class="form-control" id="assetClass">
-                <option>First</option>
-                <option>First</option>
+              <select class="form-control" id="assetClass" [(ngModel)]="security.asset">
+                <option *ngFor="let assetClass of assetClasses" [value]="assetClass.assetClassId">{{assetClass.assetClass}}</option>
               </select>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="issuer">Issuer</label>
-              <select class="form-control" id="issuer">
-                <option>First</option>
-                <option>First</option>
+              <select class="form-control" id="issuer" [(ngModel)]="security.issuer">
+                <option *ngFor="let issuer of issuers" [value]="issuer.id">{{issuer.issuerName}}</option>
               </select>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="createSecurity()">Submit</button>
       </nb-card-body>
     </nb-card>
   </div>

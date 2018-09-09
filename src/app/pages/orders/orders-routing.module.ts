@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { OrdersComponent } from './orders.component';
 import { CreateOrdersComponent } from './create-orders/create-orders.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { FindOrderComponent } from './find-order/find-order.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,9 @@ const routes: Routes = [{
   }, {
     path: 'view',
     component: ViewOrdersComponent,
+  }, {
+    path: 'find',
+    component: FindOrderComponent,
   }],
 }];
 

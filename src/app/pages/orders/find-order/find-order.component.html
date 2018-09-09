@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header>
+    Find Matching Orders
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="security">Security</label>
+          <select class="form-control" id="security" [(ngModel)]="order.security">
+            <option *ngFor="let security of securities" [value]="security.securityId">{{security.securityName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="transactionType">Transaction Type</label>
+          <select class="form-control" id="transactionType" [(ngModel)]="order.transactionType">
+            <option value="Buy">Buy</option>
+            <option value="Sell">Sell</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

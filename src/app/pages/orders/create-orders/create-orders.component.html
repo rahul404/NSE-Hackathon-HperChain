@@ -7,17 +7,17 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="security">Security</label>
-              <select class="form-control" id="security">
-                <option>Google</option>
+              <select class="form-control" id="security" [(ngModel)]="order.security">
+                <option *ngFor="let security of securities" [value]="security.securityId">{{security.securityName}}</option>
               </select>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="transactionType">Transaction Type</label>
-              <select class="form-control" id="transactionType">
-                <option>Buy</option>
-                <option>Sell</option>
+              <select class="form-control" id="transactionType" [(ngModel)]="order.transactionType">
+                <option value="Buy">Buy</option>
+                <option value="Sell">Sell</option>
               </select>
             </div>
           </div>
@@ -28,7 +28,7 @@
               <label for="price">Price</label>
               <div class="input-group">
                 <span class="input-group-addon success"><i class="fa fa-usd"></i></span>
-                <input type="number" class="form-control" placeholder="Price" min=0 id="price"/>
+                <input type="number" class="form-control" placeholder="Price" min="0" id="price" [(ngModel)]="order.price"/>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
               <label for="quantity">Quantity</label>
               <div class="input-group">
                 <span class="input-group-addon success"><i class="fa fa-bar-chart"></i></span>
-                <input type="number" class="form-control" placeholder="Quantity" min=0 id="quantity"/>
+                <input type="number" class="form-control" placeholder="Quantity" min=0 id="quantity" [(ngModel)]="order.quantity"/>
               </div>
             </div>
           </div>
@@ -46,13 +46,13 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="creator">Order Creator</label>
-              <select class="form-control" id="creator">
-                <option>Mihir</option>
+              <select class="form-control" id="creator" [(ngModel)]="order.creator">
+                <option *ngFor="let creator of creators" [value]="creator.accountId">{{creator.owner.id}}</option>
               </select>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="createOrder()">Submit</button>
       </nb-card-body>
     </nb-card>
   </div>
