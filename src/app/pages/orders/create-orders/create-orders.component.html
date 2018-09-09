@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Create a New Order</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="security">Security</label>
+              <select class="form-control" id="security">
+                <option>Google</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="transactionType">Transaction Type</label>
+              <select class="form-control" id="transactionType">
+                <option>Buy</option>
+                <option>Sell</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="price">Price</label>
+              <div class="input-group">
+                <span class="input-group-addon success"><i class="fa fa-usd"></i></span>
+                <input type="number" class="form-control" placeholder="Price" min=0 id="price"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <div class="input-group">
+                <span class="input-group-addon success"><i class="fa fa-bar-chart"></i></span>
+                <input type="number" class="form-control" placeholder="Quantity" min=0 id="quantity"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="creator">Order Creator</label>
+              <select class="form-control" id="creator">
+                <option>Mihir</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

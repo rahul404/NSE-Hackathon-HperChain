@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-header>
+    All Orders
+    <span style="float: right">
+      <button type="button" class="btn btn-outline-success btn-icon" (click)="getOrders()">
+      <i class="fa fa-refresh"></i>
+    </button></span>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
