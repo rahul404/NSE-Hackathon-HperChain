@@ -74,6 +74,14 @@ export class ApiService {
     })
   }
 
+  public getHoldingsById(id):Observable<any[]> {
+		return this.http.get(API_URL+'org.hyperchain.Account/'+id,this.resolveRelationshipParams)
+		.map(response => {
+			const accounts = response.json();
+			return accounts.holdings;
+    })
+  }
+  
   public createSecurity(sec):Observable<any> {
     var security;
     security=sec;

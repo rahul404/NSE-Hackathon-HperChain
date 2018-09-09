@@ -1,0 +1,31 @@
+<nb-card>
+  <nb-card-header>
+    View Holdings of an Account
+    <span style="float: right">
+      <button type="button" class="btn btn-outline-success btn-icon" (click)="getHoldings()">
+      <i class="fa fa-refresh"></i>
+    </button></span>
+  </nb-card-header>
+
+  <nb-card-body>
+      <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="issuer">Account</label>
+              <select class="form-control" id="issuer" [(ngModel)]="accountId">
+                <option *ngFor="let account of accounts" [value]="account.accountId">{{account.accountId}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label for="issuer">Total Balance</label>
+                <span class="form-control">${{balance}}</span>
+              </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="getHoldings()">Submit</button>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

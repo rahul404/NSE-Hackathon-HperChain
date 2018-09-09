@@ -44,4 +44,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Holdings',
+    icon: 'nb-compose',
+    children: [
+      {
+        title: 'View Holdings',
+        link: '/holdings/view',
+      },
+    ],
+  },
 ];

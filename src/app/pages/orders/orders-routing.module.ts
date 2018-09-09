@@ -36,5 +36,6 @@ export class OrdersRoutingModule {
 export const routedComponents = [
   OrdersComponent,
   CreateOrdersComponent,
-  ViewOrdersComponent
+  ViewOrdersComponent,
+  FindOrderComponent
 ];

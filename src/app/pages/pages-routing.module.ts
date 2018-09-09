@@ -39,6 +39,9 @@ const routes: Routes = [{
     path: 'orders',
     loadChildren: './orders/orders.module#OrdersModule',
   }, {
+    path: 'holdings',
+    loadChildren: './holdings/holdings.module#HoldingsModule',
+  }, {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
