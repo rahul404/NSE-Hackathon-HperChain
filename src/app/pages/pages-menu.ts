@@ -40,7 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Find Orders',
-        link: '/pages/forms/layouts',
+        link: '/orders/find',
       },
     ],
   },

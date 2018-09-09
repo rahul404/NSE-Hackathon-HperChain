@@ -48,24 +48,24 @@ export class ApiService {
     .map(response => {
       const issuers = response.json();
       if(issuers.length>0)
-        return parseInt(issuers[0].securityId)+1
+      return parseInt(issuers[0].securityId)+1
       else 
-        return 1
+      return 1
     })
   }
-
+  
   public getOrderId():Observable<any> {
     return this.http.get(API_URL+'/queries/GetMaxOrderId/')
     .map(response => {
       const orders = response.json();
       if(orders.length>0)
-        return parseInt(orders[0].orderId)+1
+      return parseInt(orders[0].orderId)+1
       else
-        return 1
+      return 1
     })
   }
-
-
+  
+  
   public getAllAccounts():Observable<any[]> {
 		return this.http.get(API_URL+'org.hyperchain.Account/',this.resolveRelationshipParams)
 		.map(response => {
@@ -73,7 +73,7 @@ export class ApiService {
 			return accounts.map((accounts) => accounts);
     })
   }
-
+  
   public getHoldingsById(id):Observable<any[]> {
 		return this.http.get(API_URL+'org.hyperchain.Account/'+id,this.resolveRelationshipParams)
 		.map(response => {
@@ -82,25 +82,71 @@ export class ApiService {
     })
   }
   
+  public getMatchingOrders(security, price, creator){
+    return this.http.get(API_URL+'org.hyperchain.Order/',{ params: { "filter": JSON.stringify({"include":"resolve","where": {
+      "and": [
+        {
+          "price": price
+        },
+        {
+          "security": "resource:org.hyperchain.Security#"+security
+        },
+        {
+          "quantity": {
+            "gt": "0"
+          }
+        },
+        {
+          "creator": {
+            "neq": "resource:org.hyperchain.Account#"+creator
+          }
+        }
+      ]
+    }}) }})
+		.map(response => {
+			const orders = response.json();
+			return orders;
+    })
+  }
+
+  public getAllOutstandingOrders(accountId){
+    return this.http.get(API_URL+'org.hyperchain.Order/',{ params: { "filter": JSON.stringify({"include":"resolve","where": {
+      "and": [
+        {
+          "creator": "resource:org.hyperchain.Account#"+accountId
+        },
+        {
+          "quantity": {
+            "gt": "0"
+          }
+        }
+      ]
+    }}) }})
+		.map(response => {
+			const orders = response.json();
+			return orders;
+    })
+  }
+
   public createSecurity(sec):Observable<any> {
     var security;
     security=sec;
     security.asset="resource:org.hyperchain.AssetClass#"+sec.asset
     security.issuer="resource:org.hyperchain.Issuer#"+sec.issuer
-
+    
     return this.http.post(API_URL+'org.hyperchain.Security/',security)
     .map(response => {
       const security = response.json();
       return security
     })
   }
-
+  
   public createOrder(ord):Observable<any> {
     var order;
     order=ord;
     order.security="resource:org.hyperchain.Security#"+ord.security
     order.creator="resource:org.hyperchain.Account#"+ord.creator
-
+    
     return this.http.post(API_URL+'org.hyperchain.Order/',order)
     .map(response => {
       const order = response.json();

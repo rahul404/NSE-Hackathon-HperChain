@@ -5,22 +5,24 @@
   <nb-card-body>
     <div class="row">
       <div class="col-sm-6">
-        <div class="form-group">
-          <label for="security">Security</label>
-          <select class="form-control" id="security" [(ngModel)]="order.security">
-            <option *ngFor="let security of securities" [value]="security.securityId">{{security.securityName}}</option>
-          </select>
-        </div>
+          <div class="form-group">
+              <label for="account">Your Id</label>
+              <select class="form-control" id="account" [(ngModel)]="accountId" (change)="onChange($event)">
+                  <option>...</option>
+                <option *ngFor="let account of accounts" [value]="account.accountId">{{account.accountId}}</option>
+              </select>
+            </div>
       </div>
       <div class="col-sm-6">
-        <div class="form-group">
-          <label for="transactionType">Transaction Type</label>
-          <select class="form-control" id="transactionType" [(ngModel)]="order.transactionType">
-            <option value="Buy">Buy</option>
-            <option value="Sell">Sell</option>
-          </select>
-        </div>
+          <div class="form-group">
+              <label for="security">Order</label>
+              <select class="form-control" id="security" [(ngModel)]="orderId">
+                <option>...</option>
+                <option *ngFor="let order of orders" [value]="order.orderId">{{order.transactionType}} {{order.quantity}} of {{order.securityName}} @ ${{order.price}}</option>
+              </select>
+            </div>
       </div>
     </div>
+    <button type="submit" class="btn btn-primary" (click)="getMatchingOrders()">Submit</button>
   </nb-card-body>
 </nb-card>
